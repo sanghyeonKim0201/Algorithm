@@ -9,5 +9,3 @@ for i in range(n):
         num+=1
     
 print(num)
-
-    

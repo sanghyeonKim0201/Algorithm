@@ -1,4 +1,9 @@
-public class Main {
+package silver;
+
+import java.io.*;
+import java.util.*;
+
+public class Baek_4673_OK {
     static boolean[] check = new boolean[10001];
 
     public static void main(String[] args) {

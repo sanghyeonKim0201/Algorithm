@@ -1,22 +1,36 @@
-from itertools import permutations
-
 def solution(numbers):
-    answer = []                                   
-    nums = [n for n in numbers]                   
-    per = []                                      
-    for i in range(1, len(numbers)+1):            
-        per += list(permutations(nums, i))        
-    new_nums = [int(("").join(p)) for p in per]   
+    answer = 0
 
-    for n in new_nums:                           
-        if n < 2:                                 
-            continue
-        check = True            
-        for i in range(2,int(n**0.5) + 1):        
-            if n % i == 0:                        
-                check = False
-                break
-        if check:
-            answer.append(n)                      
+    arr = []
+    check = [False for i in range(len(arr))]
 
-    return len(set(answer))   
+    recursive(arr, "", numbers)
+    
+    arr = set(arr)
+
+    for i in arr:
+        
+        if isDecimal(i):
+            answer+=1
+
+    return answer
+
+def recursive(arr, comb, others):
+
+    if comb != "":
+        arr.append(int(comb))
+        set(arr)
+    for i in range(len(others)):
+        recursive(arr, comb + others[i], ("").join(str(j) for j in others[0:i]) +  ("").join(str(j) for j in others[i+1:]))
+
+def isDecimal(num):
+
+    if num < 2:
+        return False
+    
+    for i in range(2, num):
+        
+        if num % i == 0:
+            return False
+    return True
+    

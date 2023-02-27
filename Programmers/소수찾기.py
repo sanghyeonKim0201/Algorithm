@@ -2,10 +2,8 @@ def solution(numbers):
     answer = 0
 
     arr = []
-    check = [False for i in range(len(arr))]
 
     recursive(arr, "", numbers)
-    
     arr = set(arr)
 
     for i in arr:
@@ -15,7 +13,7 @@ def solution(numbers):
 
     return answer
 
-def recursive(arr, comb, others):
+def recursive(arr, comb, others): 
 
     if comb != "":
         arr.append(int(comb))
@@ -33,4 +31,5 @@ def isDecimal(num):
         if num % i == 0:
             return False
     return True
-    
+
+solution("17")
